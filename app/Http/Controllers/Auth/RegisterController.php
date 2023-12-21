@@ -52,12 +52,12 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'phonenumber' => ['required', 'string', 'max:255'],
-            'date' => ['required', 'string', 'max:255'],
+            'gender' => ['required', 'string', 'max:255'],
             'regions' => ['required', 'string', 'max:255'],
-            'language' => ['required', 'string', 'max:255'],
+            'date_birth' => ['required', 'string', 'max:255'],
             'districts' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'string', 'max:255'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -72,11 +72,12 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'date' => $data['date'],
-            'language' => $data['language'],
-            'regions' => $data['regions'],
             'districts' => $data['districts'],
             'gender' => $data['gender'],
+            'regions' => $data['regions'],
+            'date_birth' => $data['date_birth'],
+            'phone' => $data['phone'],
+            'language' => $data['language'],
             'password' => Hash::make($data['password']),
         ]);
     }
